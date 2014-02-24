@@ -25,16 +25,15 @@ message.pack()
 e2 = Entry(root)
 e2.pack()
 
-po = Label(root,text = "Players online: null")
+po = Label(root,text = "Player Count: null")
 po.pack() 
 def ServerStatsPlayer():
   try:
    query = MinecraftQuery(str(e.get()), int(e2.get()))
    status = query.get_status()
-   pol = (status['numplayers'])
-   po.config(text = "Players online: " + str(pol))
+   po.config(text = "Player Count: " + str(status['numplayers']))
   except socket.error as ee: 
-   po.config(text = "Players online: Cannot connect to server!")
+   po.config(text = "Player Count: Cannot connect to server!")
 b = Button(root, text = "Get Server Info", fg = "green", command = ServerStatsPlayer)
 b.pack()
 
